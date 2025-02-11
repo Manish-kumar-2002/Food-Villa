@@ -1,0 +1,389 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #000;
+  color: #fff;
+}
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+:root {
+  --color-white-100: #fff;
+  --color-white-200: #e4e6e7;
+  --color-white-300: #c9cccf;
+  --color-white-400: #a1a6aa;
+  --color-white-500: #798086;
+  --color-black-100: #14191f;
+  --color-black-200: #101419;
+  --color-black-300: #0c0f13;
+  --color-black-400: #0c0f13;
+  --color-black-500: #080a0c;
+  --color-black-600: #060709;
+  --color-black-700: #040506;
+  --color-black-800: #020303;
+  --color-blue-100: #dcebfe;
+  --color-blue-200: #bedbfe;
+  --color-blue-300: #91c3fd;
+  --color-blue-400: #61a6fa;
+  --color-blue-500: #3c83f6;
+  --color-blue-600: #2463eb;
+  --color-blue-700: #1d4fd7;
+  --color-blue-800: #1e3fae;
+  --color-blue-900: #1e3b8a;
+  --shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* header */
+
+.btn {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  user-select: none;
+  outline: none;
+  border: none;
+  border-radius: 0.25rem;
+  text-transform: unset;
+  transition: all 0.3s ease-in-out;
+}
+
+.header {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  transition: all 0.35s ease;
+  padding: 20px 0;
+  box-shadow: 0px 0px 11px 0px #3c3c3c;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 1.25rem;
+  width: 100%;
+  height: 4.25rem;
+  margin: 0 auto;
+}
+.brand {
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -1px;
+  color: var(--color-white-100);
+  text-transform: uppercase;
+}
+.menu {
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+
+  width: auto;
+  height: auto;
+  padding: 0rem;
+  margin-left: auto;
+  background: none;
+  box-shadow: none;
+}
+.menu.is-active {
+  top: 0;
+  width: 100%;
+  height: auto;
+}
+.menu-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1.25rem;
+  flex-direction: row;
+  column-gap: 2rem;
+  margin: 0 auto;
+}
+.menu-link {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-white-100);
+  transition: all 0.3s ease;
+  text-transform: capitalize;
+}
+.menu-block {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+  user-select: none;
+  white-space: nowrap;
+  text-align: center;
+  padding: 0.65rem 1.5rem;
+  border-radius: 3rem;
+  text-transform: capitalize;
+  color: var(--color-white);
+  background-color: var(--color-blue-600);
+  box-shadow: var(--shadow-medium);
+  transition: all 0.3s ease-in-out;
+  margin-left: 2rem;
+}
+
+/* cards */
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23.8%;
+}
+
+.restaurant-card {
+  transition: transform 0.3s ease-in-out;
+  font-family: "Arial", sans-serif;
+  background: transparent;
+}
+
+.restaurant-card:hover {
+  cursor: pointer;
+  transform: scale(0.95);
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+  height: 180px;
+  display: block;
+  border-radius: 20px;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+.image-container::after {
+  content: "";
+  position: absolute;
+  top: 80%;
+  left: 0;
+  right: 0;
+  border: none;
+  border-radius: 0 0 20px 20px;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+.discount-badge {
+  position: absolute;
+  color: #fff;
+  bottom: 0;
+  left: 10px;
+  padding: 5px;
+  z-index: 2;
+  font-weight: bold;
+  font-size: 22px;
+  font-family: "Proxima Nova Condensed", sans-serif;
+}
+
+.restaurant-name {
+  font-weight: bold;
+  font-size: 28px;
+  margin: 0;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.rating {
+  display: flex;
+  align-items: start;
+  margin-top: 5px;
+  font-weight: semi-bold;
+}
+
+.review-count {
+  margin-left: 5px;
+  font-weight: semi-bold;
+}
+
+.delivery-info {
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+}
+
+.bi-star-fill {
+  color: green;
+}
+
+.bi-dot {
+  font-size: 26px;
+}
+
+/* footer */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer {
+  background-color: #24262b;
+  padding: 70px 0;
+}
+.footer-col {
+  width: 25%;
+  padding: 0 15px;
+}
+.footer-col h4 {
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  font-weight: 500;
+  position: relative;
+}
+.footer-col h4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background-color: #e91e63;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+.footer-col ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+.footer-col ul li a {
+  font-size: 16px;
+  text-transform: capitalize;
+  text-decoration: none;
+  font-weight: 400;
+  color: #bbbbbb;
+  display: block;
+  transition: all 0.3s ease;
+}
+.footer-col ul li a:hover {
+  color: #ffffff;
+  padding-left: 8px;
+}
+.footer-col .social-links a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover {
+  color: #24262b;
+  background-color: #ffffff;
+}
+
+/* 
+
+
+PS F:\.manish\react\NamasteReact\react-parcel> npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help init` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (react-parcel)
+version: (1.0.0)
+description: react app using parcel bundler
+entry point: (App.js)
+test command: jest
+git repository:
+keywords:
+author: manish                                                                                                                                                        
+license: (ISC)
+About to write to F:\.manish\react\NamasteReact\react-parcel\package.json:
+
+{
+license: (ISC)
+About to write to F:\.manish\react\NamasteReact\react-parcel\package.json:
+
+{
+About to write to F:\.manish\react\NamasteReact\react-parcel\package.json:
+
+{
+
+{
+{
+  "name": "react-parcel",
+  "version": "1.0.0",
+  "description": "react app using parcel bundler",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "manish",
+  "license": "ISC"
+}
+
+
+Is this OK? (yes)
+PS F:\.manish\react\NamasteReact\react-parcel> npm i -D parcel
+
+added 159 packages, and audited 160 packages in 6m
+
+85 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+PS F:\.manish\react\NamasteReact\react-parcel> npm i react
+
+added 1 package, and audited 161 packages in 10s
+
+85 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+PS F:\.manish\react\NamasteReact\react-parcel> npm i react-dom
+
+added 2 packages, and audited 163 packages in 11s
+
+85 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+PS F:\.manish\react\NamasteReact\react-parcel> npx parcel index.html
+
+*/
