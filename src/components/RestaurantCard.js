@@ -1,4 +1,4 @@
-import { IMG_URL } from "../../Constant";
+import { IMG_URL } from "../../constant";
 
 const RestaurantCard = ({
   name,
