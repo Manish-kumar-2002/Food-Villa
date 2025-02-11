@@ -1,26 +1,12 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMG_URL } from "../../constant";
 import ShimmerMenu from "./ShimmerMenu";
+import useGetMenu from "../utils/useGetMenu";
 
 const RestaurantMenu = () => {
+  
   const { resId } = useParams("");
-  const [menu, setMenu] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-  // console.log(menu?.data?.cards[2]?.card?.card?.info?.name);
-
-  useEffect(() => {
-    getRestaurantMenuData();
-  }, []);
-
-  async function getRestaurantMenuData() {
-    const data = await fetch(
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=${resId}`
-    );
-    const reponseData = await data.json();
-    // console.log(reponseData);
-    setMenu(reponseData);
-  }
+  const menu = useGetMenu(resId)
 
   return (
     <div className="py-14">

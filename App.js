@@ -10,7 +10,6 @@ import ErrorPage from "./src/components/ErrorPage";
 import RestaurantMenu from "./src/components/RestaurantMenu";
 import LoginPage from "./src/components/LoginPage";
 import InnerAbout from "./src/components/InnerAbout";
-import ProfileFuncionBased from "./src/components/ProfileFunctionBased";
 
 
 
@@ -107,10 +106,7 @@ const appRouter = createBrowserRouter([
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
       },
-      {
-        path: "/profileFunction",
-        element: <ProfileFuncionBased />,
-      },
+      
     ]
   }
 ],

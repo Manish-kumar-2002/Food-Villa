@@ -3,8 +3,6 @@ class ChildClass extends Component{
     constructor(props){
         super(props);
         this.state = {
-            count:1,
-            countTwo:2,
             userInfo:""
         }
         console.log("Child constructor");
@@ -25,9 +23,8 @@ class ChildClass extends Component{
     }
     render(){
         console.log("Child render()");
-        const {count,countTwo} = this.state
         return(
-        <div className="container py-10">Child Class {this.props.name} {this.props.xyz}  {this.state.userInfo.name} {this.state.userInfo.login} {this.state.count} <button className="" onClick={() => this.setState({ count: this.state.count + 1 })} >Click me </button></div>
+        <div className="container pt-3 pb-10">Child Class {this.props.name} {this.props.xyz}  {this.state.userInfo.name} {this.state.userInfo.login} </div>
            
         )        
     }
