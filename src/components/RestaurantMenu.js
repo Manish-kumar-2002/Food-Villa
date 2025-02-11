@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { IMG_URL } from "../../Constant";
+import { IMG_URL } from "../../constant";
 import ShimmerMenu from "./ShimmerMenu";
 
 const RestaurantMenu = () => {
