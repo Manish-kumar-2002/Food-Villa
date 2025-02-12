@@ -29,6 +29,11 @@ const HeaderComponent = function () {
                 </Link>
               </li>
               <li className="menu-item">
+                <Link to="/instantMart" className="menu-link">
+                  InstantMart
+                </Link>
+              </li>
+              <li className="menu-item">
                 <Link to="/support" className="menu-link">
                   Support
                 </Link>

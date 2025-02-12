@@ -4,6 +4,7 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterRestautrant } from "../utils/helper";
 import useGetReastaurant from "../utils/useGetRestaurant";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const MainSection = function () {
   const [filterRestaurants, setFilterRestaurants] = useState([]);
@@ -11,6 +12,13 @@ const MainSection = function () {
   const restaurants = useGetReastaurant(setFilterRestaurants);
 
   const [search, setSearch] = useState("");
+
+  const isOnline = useOnlineStatus();
+
+  // early return
+  if(isOnline){
+    return "net off"
+  }
 
   return (
     <div className="py-10">
