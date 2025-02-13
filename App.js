@@ -1,8 +1,7 @@
 import React, { lazy ,Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider ,Outlet } from "react-router-dom";
+import { createBrowserRouter, BrowserRouter, RouterProvider ,Outlet } from "react-router-dom";
 import HeaderComponent from "./src/components/Header";
-import MainSection from "./src/components/Body";
 import Footer from "./src/components/Footer";
 import Contact from "./src/components/Contact";
 import ErrorPage from "./src/components/ErrorPage";
@@ -10,8 +9,10 @@ import RestaurantMenu from "./src/components/RestaurantMenu";
 import LoginPage from "./src/components/LoginPage";
 import InnerAbout from "./src/components/InnerAbout";
 import MartProduct from "./src/components/MartProduct";
-import ShimmerMart from "./src/components/ShimmerMart";
 
+
+
+const MainSection = lazy(()=>import("./src/components/Body"))
 const InstantMart = lazy(()=>import("./src/components/InstantMart"))
 const About = lazy(()=>import("./src/components/About"))
 
@@ -115,7 +116,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/instantMart",
-        element: <Suspense fallback={<ShimmerMart />}><InstantMart /></Suspense>,
+        element: <Suspense fallback={<h1 className="text-3xl h-[60vh] flex items-center justify-center text-center flex-col">Loading....</h1>}><InstantMart /></Suspense>,
       },
     ]
   }
@@ -130,4 +131,4 @@ const appRouter = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //passing a react element inside the root
 //async defer
-root.render(<RouterProvider router={appRouter} />);
+root.render(<RouterProvider router={appRouter}></RouterProvider>);

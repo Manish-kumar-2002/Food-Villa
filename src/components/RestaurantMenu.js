@@ -1,16 +1,46 @@
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { IMG_URL } from "../../constant";
 import ShimmerMenu from "./ShimmerMenu";
 import useGetMenu from "../utils/useGetMenu";
 
+
 const RestaurantMenu = () => {
-  
   const { resId } = useParams("");
-  const menu = useGetMenu(resId)
+  const menu = useGetMenu(resId);
+
+  console.log(menu);
+  console.log(menu?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.categoryId);
+  
+
+  
+  // const accordionData = [
+  //   { id: 1, title: "Section 1", content: "Content for section 1" },
+  //   { id: 2, title: "Section 2", content: "Content for section 2" },
+  //   { id: 3, title: "Section 3", content: "Content for section 3" },
+  // ];
+  const [openId, setOpenId] = useState(menu?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.categoryId);
+  const toggleAccordion = (id) => {
+    setOpenId(openId === id ? null : id);
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="py-14">
       <div className="container">
+
+      {/* <div>
+      {accordionData.map(({ id, title, content }) => (
+        <div key={id}>
+          <button onClick={() => toggleAccordion(id)}>{title}</button>
+          {openId === id && <div>{content}</div>}
+        </div>
+      ))}
+    </div> */}
+        
         {menu?.data?.cards[2]?.card?.card?.info?.name == undefined ? (
           <ShimmerMenu />
         ) : (
@@ -44,54 +74,46 @@ const RestaurantMenu = () => {
               </p>
             </div>
             <div className="restaurent-menu">
-              <p className="text-2xl font-bold mb-4">Menu List <i class="fas fa-utensils"></i>  </p>
+              <p className="text-2xl font-bold mb-4">
+                Menu List <i className="fas fa-utensils"></i>{" "}
+              </p>
               <div className="flex gap-10 flex-wrap">
-                {/* <ul className="w-[46%]">
-                    {menu?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards.map(
-                      (element) => (
-                        <li
-                          className="list-disc flex gap-20 justify-between mb-2"
-                          key={element?.card?.info?.id}
-                        >
-                          <span>{element?.card?.info?.name}</span>  <span className="whitespace-nowrap">₹ {(element?.card?.info?.price / 100).toFixed(2) || "not mentioned"}</span>
-                        </li>
-                      )
-                    )}
-                  </ul> */}
                 {menu?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
                   ?.slice(1)
                   .map(
                     (card, index) =>
-//                         
-//                     && (AND): Executes the right-hand side only if the left-hand side condition is true.  (Short-circuit evaluation) AND (&&) ensures we only render lists that have data.
-//                     || (OR): Executes the right-hand side if the left-hand side condition is false or falsy.  OR (||) would cause empty lists to be rendered when itemCards is missing or empty.
-//                       The ?? (Nullish Coalescing Operator) is used to provide a default value only when the left-hand side is null or undefined.
-                      (card?.card?.card?.itemCards?.length > 0) && (
+                      card?.card?.card?.itemCards?.length > 0 && (
                         <div
                           key={card?.card?.card?.categoryId || index}
-                          className="w-[46%] border-collapse border rounded-lg p-5"
+                          className="w-full border-collapse border rounded-lg p-5"
                         >
-                          <h1 className="text-xl mb-4 font-bold underline">
+                          <h1 className="text-xl font-bold cursor-pointer" onClick={() => toggleAccordion(card?.card?.card?.categoryId)}>
                             {card?.card?.card?.title || "No Title"}
                           </h1>
-                          <ul>
-                            {(card?.card?.card?.itemCards).map((element) => (
-                              <li
-                                className="list-disc flex gap-20 justify-between mb-2"
-                                key={element?.card?.info?.id}
-                              >
-                                <span>{element?.card?.info?.name}</span>
-                                <span className="whitespace-nowrap">
-                                  ₹{" "}
-                                  {element?.card?.info?.price
-                                    ? (
-                                        element?.card?.info?.price / 100
-                                      ).toFixed(2)
-                                    : "Price unavailable"}
-                                </span>
-                              </li>
-                            ))}
+                          {
+                            openId === card?.card?.card?.categoryId && <ul className="mt-4">
+                            {card.card.card.itemCards.map(
+                              (
+                                element //Unsafe usage of optional chaining. If it short-circuit with 'undefined' the evaluation will throw TypeError
+                              ) => (
+                                <li
+                                  className="list-disc flex gap-20 justify-between mb-2 relative after:w-full after:absolute after:border-b after:border-dotted after:block  after:bottom-2 after:left-0 after:-z-10"
+                                  key={element?.card?.info?.id}
+                                >
+                                  <span className="bg-black block pr-2">{element?.card?.info?.name}</span>
+                                  <span className="whitespace-nowrap pl-2 bg-black block">
+                                    ₹{" "}
+                                    {element?.card?.info?.price
+                                      ? (
+                                          element?.card?.info?.price / 100
+                                        ).toFixed(2)
+                                      : "Price unavailable"}
+                                  </span>
+                                </li>
+                              )
+                            )}
                           </ul>
+                          }
                         </div>
                       )
                   )}
