@@ -7,6 +7,9 @@ import useClock from "../utils/useClock";
 const InstantMart = () => {
   const martPoducts = UseGetInstantMart();
 
+  console.log(martPoducts);
+  
+
   const specificNightTime = new Date();
   const specificDayTime = new Date();
 
@@ -31,8 +34,14 @@ const InstantMart = () => {
     );
   }
 
+  if(martPoducts.length === 1){
+    return <div className="h-[60vh] flex items-center justify-center text-center flex-col">
+    <strong className="text-3xl mb-5">Store Closed!</strong>
+  </div>
+  }
+
   return (
-    <div className="p-10">
+    <div className="py-10">
       <div className="container">
         <h1 className="text-3xl font-bold">Instant Mart</h1>
         <span className="text-xl font-bold mb-5 block">
@@ -41,12 +50,12 @@ const InstantMart = () => {
         {martPoducts.length === 0 ? (
           <ShimmerMart />
         ) : (
-          <div className="flex flex-wrap gap-5 justify-start">
+          <div className="flex flex-wrap gap-5 justify-center">
             {martPoducts.map((element) => (
               <Link
                 to={`/product/${element?.product_id}`}
                 key={element?.variations[0]?.id}
-                className="w-[18.7%] bg-black text-white rounded-xl shadow-md p-3 relative hover:scale-95 duration-300 ease-in"
+                className="w-[46%] md:w-[18.7%] bg-black text-white rounded-xl shadow-md p-3 relative hover:scale-95 duration-300 ease-in"
               >
                 <div className="absolute top-2 left-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">
                   {
@@ -57,7 +66,7 @@ const InstantMart = () => {
                 <img
                   src={MART_PRODUCT_IMG + element?.variations[0]?.images[0]}
                   alt={element?.variations[0]?.display_name}
-                  className="w-full h-40 object-cover rounded"
+                  className="w-full h-40 object-contain rounded"
                 />
                 <div className="mt-2 text-gray-300 text-xs">⏳16 mins</div>
                 <h2 className="text-white font-semibold text-sm">

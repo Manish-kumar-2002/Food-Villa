@@ -9,11 +9,14 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 const MainSection = function () {
   const [filterRestaurants, setFilterRestaurants] = useState([]);
 
-  const restaurants = useGetReastaurant(setFilterRestaurants);
+  let restaurants = useGetReastaurant(setFilterRestaurants);
 
   const [search, setSearch] = useState("");
 
   const isOnline = useOnlineStatus();
+
+  console.log(restaurants);
+  
 
   // early return
   if(isOnline){
@@ -44,13 +47,13 @@ const MainSection = function () {
           </button>
         </div>
 
-        {restaurants?.length === 0 ? (
+        {restaurants.length === 0 ? (
           <Shimmer />
         ) : (
           <div className="flex flex-wrap gap-5 justify-start">
             {filterRestaurants.map((restaurant, index) => (
               <Link
-                className="w-[23.8%]"
+                className="w-[100%] md:w-[31.6%]  lg:w-[23.7%]"
                 key={restaurant.info.id}
                 to={`/restaurant/${restaurant.info.id}`}
               >

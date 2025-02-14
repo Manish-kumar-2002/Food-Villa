@@ -14,7 +14,7 @@ const UseGetInstantMart = () =>{
     async function getInstaMart(){
         const response = await fetch("https://www.swiggy.com/api/instamart/home?clientId=INSTAMART-APP")
         const data =   await response.json();
-        const martProduct = data?.data?.widgets[3]?.data
+        const martProduct = data?.data?.widgets[4]?.data
         setInstantMartProduct(martProduct)
     }
 

@@ -26,11 +26,11 @@ const MartProduct = () => {
   console.log(filterProduct);
 
   return  (
-    <div className="p-10">
+    <div className="py-10">
       <div className="container">
         {
-          filterProduct.length === 0 ? <ShimmerMenu /> : <div className="flex">
-            <div className="w-[500px] bg-black rounded-xl shadow-md p-4 relative">
+          filterProduct.length === 0 ? <ShimmerMenu /> : <div className="flex flex-col md:flex-row">
+            <div className="lg:w-[500px] bg-black rounded-xl shadow-md p-4 relative">
           {/* Discount Badge */}
           <div className="absolute top-2 left-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">
             {
@@ -62,10 +62,10 @@ const MartProduct = () => {
           {/* Price Section */}
           <div className="flex items-center mt-1">
             <span className="text-white font-bold text-lg">
-              ₹{filterProduct[0]?.variations[0]?.price?.store_price}
+              ₹{filterProduct[0]?.variations[0]?.price?.offer_price}
             </span>
             <span className="text-gray-300 text-sm line-through ml-2">
-              ₹{filterProduct[0]?.variations[0]?.price?.offer_price}
+              ₹{filterProduct[0]?.variations[0]?.price?.store_price}
             </span>
           </div>
 

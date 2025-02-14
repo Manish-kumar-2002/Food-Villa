@@ -47,16 +47,15 @@ const RestaurantMenu = () => {
         {menu?.data?.cards[2]?.card?.card?.info?.name == undefined ? (
           <ShimmerMenu />
         ) : (
-          <div className="menu-wrap flex gap-10">
-            <div className="restaurent-details">
-              <h1 className="text-3xl font-bold whitespace-nowrap mb-2">
+          <div className="menu-wrap flex flex-col md:flex-row gap-10">
+            <div className="restaurent-details md:w-[300px] flex-none">
+              {/* <h1 className="text-3xl font-bold whitespace-nowrap mb-2">
                 Restaurant Id : {resId}
-              </h1>
-              <p className="text-xl mb-4">
-                Restaurant Name : {menu?.data?.cards[2]?.card?.card?.info?.name}
+              </h1> */}
+              <p className="text-3xl font-bold mb-4">
+                {menu?.data?.cards[2]?.card?.card?.info?.name}
               </p>
-              <img
-                width={200}
+              <img className="h-[300px]"
                 src={
                   IMG_URL +
                   menu?.data?.cards[2]?.card?.card?.info?.cloudinaryImageId

@@ -13,6 +13,7 @@ body {
 .container {
   max-width: 1280px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 :root {
@@ -47,7 +48,7 @@ body {
 }
 
 /* header */
-
+/* 
 .btn {
   display: inline-block;
   font-family: inherit;
@@ -84,15 +85,7 @@ body {
   height: 4.25rem;
   margin: 0 auto;
 }
-.brand {
-  font-family: inherit;
-  font-size: 1.6rem;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: -1px;
-  color: var(--color-white-100);
-  text-transform: uppercase;
-}
+
 .menu {
   overflow: hidden;
   transition: all 0.4s ease-in-out;
@@ -127,6 +120,7 @@ body {
   transition: all 0.3s ease;
   text-transform: capitalize;
 }
+   */
 .menu-block {
   display: inline-block;
   font-family: inherit;
@@ -144,6 +138,15 @@ body {
   box-shadow: var(--shadow-medium);
   transition: all 0.3s ease-in-out;
   margin-left: 2rem;
+}
+.brand {
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -1px;
+  color: var(--color-white-100);
+  text-transform: uppercase;
 }
 
 /* cards */
@@ -252,6 +255,7 @@ body {
 .row {
   display: flex;
   flex-wrap: wrap;
+  gap: 38px 0px;
 }
 
 .footer {
@@ -259,7 +263,7 @@ body {
   padding: 70px 0;
 }
 .footer-col {
-  width: 25%;
+  width: 100%;
   padding: 0 15px;
 }
 .footer-col h4 {
@@ -313,6 +317,17 @@ body {
   background-color: #ffffff;
 }
 
+
+@media (min-width: 768px) {
+  .footer-col{
+    width: 50%;
+  }
+}
+@media (min-width: 1024px) {
+  .footer-col{
+    width: 25%;
+  }
+}
 /* 
 
 
