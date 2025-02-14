@@ -7,10 +7,11 @@ import useGetMenu from "../utils/useGetMenu";
 
 const RestaurantMenu = () => {
   const { resId } = useParams("");
+
   const menu = useGetMenu(resId);
 
   console.log(menu);
-  console.log(menu?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.categoryId);
+
   
 
   
@@ -19,10 +20,12 @@ const RestaurantMenu = () => {
   //   { id: 2, title: "Section 2", content: "Content for section 2" },
   //   { id: 3, title: "Section 3", content: "Content for section 3" },
   // ];
-  const [openId, setOpenId] = useState(menu?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.categoryId);
+  const [openId, setOpenId] = useState();
   const toggleAccordion = (id) => {
     setOpenId(openId === id ? null : id);
   };
+
+  // toggleAccordion(menu?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.categoryId)
 
   useEffect(() => {
     window.scrollTo(0, 0);

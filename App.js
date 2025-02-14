@@ -1,6 +1,6 @@
 import React, { lazy ,Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, BrowserRouter, RouterProvider ,Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider ,Outlet } from "react-router-dom";
 import HeaderComponent from "./src/components/Header";
 import Footer from "./src/components/Footer";
 import Contact from "./src/components/Contact";

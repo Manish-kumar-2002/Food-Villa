@@ -19,6 +19,10 @@ const MartProduct = () => {
     });
   }, [filterProduct]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   console.log(filterProduct);
 
   return  (

@@ -35,7 +35,7 @@ const About = () => {
         <Section title={"is Not important"} discription={"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi vel sequi, consequuntur quisquam officia, omnis architecto labore molestias unde quod ullam necessitatibus rem tenetur! Ad ex repellat vel magnam ullam."} isVisible={activeIndex === 3} setActiveIndex={4}  /> */}
 
 
-        <strong className="text-3xl font-bold whitespace-nowrap mb-4">{CurrentTime}</strong>
+        <strong className="text-3xl font-bold whitespace-nowrap mb-4">{CurrentTime.toLocaleTimeString()}</strong>
         <AboutFunction />
         <AboutClass />
       </div>

@@ -6,25 +6,19 @@ import useClock from "../utils/useClock";
 
 const InstantMart = () => {
   const martPoducts = UseGetInstantMart();
-  // console.log(martPoducts);
 
   const specificNightTime = new Date();
   const specificDayTime = new Date();
 
   specificNightTime.setHours(23, 0, 0);
-  specificDayTime.setHours(10, 0, 0);
+  specificDayTime.setHours(6, 0, 0);
 
-  const CurrentTime = useClock();
-
-  console.log(
-    specificNightTime.toLocaleTimeString() < CurrentTime ||
-      specificDayTime.toLocaleTimeString() > CurrentTime
-  );
+  const currentTime = useClock();
 
   if (
-    specificNightTime.toLocaleTimeString() < CurrentTime ||
-    specificDayTime.toLocaleTimeString() > CurrentTime
-  ) {
+    currentTime.getTime() < specificDayTime.getTime() || 
+    currentTime.getTime() >= specificNightTime.getTime()
+) {
     return (
       <div className="h-[60vh] flex items-center justify-center text-center flex-col">
         <strong className="text-3xl mb-5">🕛 Store Closed! 🕛</strong>

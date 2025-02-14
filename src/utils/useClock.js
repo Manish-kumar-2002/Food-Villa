@@ -11,11 +11,7 @@ const useClock = () => {
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
 
-  return time.toLocaleTimeString()
-    // <div>
-    //   <h2>Current Time:</h2>
-    //   <p>{time.toLocaleTimeString()}</p>
-    // </div>
+  return time
 };
 
 export default useClock;
