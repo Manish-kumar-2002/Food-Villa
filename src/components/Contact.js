@@ -1,6 +1,6 @@
 const Contact = () => {
     return (
-        <div className="contact py-10">
+        <div className="contact py-10 pt-[98px] md:pt-[128px]">
       <div className="container">
         <img className='banner-img mb-5' src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/m/seo/Food_collectionbanner.png" alt="banner" />
         <h2 className="text-3xl font-bold whitespace-nowrap mb-4">Contact Us</h2>

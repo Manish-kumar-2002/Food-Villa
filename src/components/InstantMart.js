@@ -23,25 +23,27 @@ const InstantMart = () => {
     currentTime.getTime() >= specificNightTime.getTime()
 ) {
     return (
-      <div className="h-[60vh] flex items-center justify-center text-center flex-col">
+      <div className="container pt-[98px] md:pt-[128px]">
+        <div className="h-[60vh] flex items-center justify-center text-center flex-col">
         <strong className="text-3xl mb-5">🕛 Store Closed! 🕛</strong>
-        <p className="text-xl mb-5 w-[585px]">
+        <p className="text-xl mb-5 max-w-[585px]">
           Our services are currently unavailable. We are open daily from 10:00
           AM to 11:00 PM. Please visit us during our operating hours.
         </p>
         <p className="text-lg">🙏 We look forward to serving you! 🙏</p>
       </div>
+      </div>
     );
   }
 
   if(martPoducts.length === 1){
-    return <div className="h-[60vh] flex items-center justify-center text-center flex-col">
+    return <div className="pt-[98px] md:pt-[128px] h-[60vh] flex items-center justify-center text-center flex-col">
     <strong className="text-3xl mb-5">Store Closed!</strong>
   </div>
   }
 
   return (
-    <div className="py-10">
+    <div className="py-10 pt-[98px] md:pt-[128px]">
       <div className="container">
         <h1 className="text-3xl font-bold">Instant Mart</h1>
         <span className="text-xl font-bold mb-5 block">

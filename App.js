@@ -9,6 +9,8 @@ import RestaurantMenu from "./src/components/RestaurantMenu";
 import LoginPage from "./src/components/LoginPage";
 import InnerAbout from "./src/components/InnerAbout";
 import MartProduct from "./src/components/MartProduct";
+import Cart from "./src/components/Cart";
+import { CartProvider } from "./src/utils/UpdateCartContext";
 
 
 
@@ -70,6 +72,7 @@ const About = lazy(()=>import("./src/components/About"))
 const AppLayout = () => {
   return (
     <>
+    
       <HeaderComponent />
       <Outlet />
       <Footer />
@@ -118,6 +121,10 @@ const appRouter = createBrowserRouter([
         path: "/instantMart",
         element: <Suspense fallback={<h1 className="text-3xl h-[60vh] flex items-center justify-center text-center flex-col">Loading....</h1>}><InstantMart /></Suspense>,
       },
+      {
+        path: "/cart",
+        element: <Cart />
+      }
     ]
   }
 ],
@@ -131,4 +138,4 @@ const appRouter = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //passing a react element inside the root
 //async defer
-root.render(<RouterProvider router={appRouter}></RouterProvider>);
+root.render(<CartProvider><RouterProvider router={appRouter} /></CartProvider>);

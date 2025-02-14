@@ -6,7 +6,7 @@ import { filterRestautrant } from "../utils/helper";
 import useGetReastaurant from "../utils/useGetRestaurant";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
-const MainSection = function () {
+const MainSection = () => {
   const [filterRestaurants, setFilterRestaurants] = useState([]);
 
   let restaurants = useGetReastaurant(setFilterRestaurants);
@@ -20,11 +20,11 @@ const MainSection = function () {
 
   // early return
   if(isOnline){
-    return "net off"
+    return <div className="pt-[98px] md:pt-[128px]">"net off"</div>
   }
 
   return (
-    <div className="py-10">
+    <div className="py-10 pt-[98px] md:pt-[128px]">
       <div className="container">
         <div className="flex justify-start mb-8">
           <input
