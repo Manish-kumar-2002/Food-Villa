@@ -72,7 +72,6 @@ const About = lazy(()=>import("./src/components/About"))
 const AppLayout = () => {
   return (
     <>
-    
       <HeaderComponent />
       <Outlet />
       <Footer />

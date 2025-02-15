@@ -154,12 +154,12 @@ const RestaurantMenu = () => {
                                       alt={element?.card?.info?.name}
                                       className="w-24 h-24 rounded-lg"
                                     />
-                                    <dic className="flex justify-center items-center mt-2 gap-3">
+                                    <div className="flex justify-center items-center mt-2 gap-3">
                                     {(state.count == 0) ? "" :( <span className="cursor-pointer" onClick={() => dispatch({ type: "REMOVE_FROM_CART", payload: item.id })}><i className="fas fa-minus"></i></span>)}
-                                    <button className="bg-green-500 text-white px-4 py-1 rounded-lg" onClick={() => dispatch({ type: "ADD_TO_CART", payload: product })}>
+                                    <button className="bg-green-500 text-white px-4 py-1 rounded-lg" onClick={() => dispatch({ type: "ADD_TO_CART", payload: element?.card })}>
                                     {state.count == 0 ? " ADD " : state.count}
-                                    </button>{(state.count == 0) ? "" :( <span className="cursor-pointer" onClick={() => dispatch({ type: "ADD_TO_CART", payload: product })}><i className="fas fa-plus"></i></span>)}
-                                    </dic>
+                                    </button>{(state.count == 0) ? "" :( <span className="cursor-pointer" onClick={() => dispatch({ type: "ADD_TO_CART", payload: element?.card })}><i className="fas fa-plus"></i></span>)}
+                                    </div>
                                   </div>
                                 )}
                               </div>
