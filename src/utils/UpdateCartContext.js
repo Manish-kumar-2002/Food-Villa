@@ -19,8 +19,9 @@ const cartReducer = (state, action) => {
     case "REMOVE_FROM_CART":
       return {
         ...state,
-        cart: state.cart.filter(item => item.id !== action.payload), // Remove item
-        count: state.count > 0 ? state.count - 1 : 0 // Count decrement
+        cart: state.cart.filter(item => item?.info?.id !== action.payload), // Remove item
+        count: state.count > 0 ? state.count - 1 : 0, // Count decrement
+        count: !(state.cart.length === 0) && 0
       };
 
     default:

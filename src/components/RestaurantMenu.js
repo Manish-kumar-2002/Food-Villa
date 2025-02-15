@@ -45,7 +45,7 @@ const RestaurantMenu = () => {
       ))}
     </div> */}
 
-        {menu?.data?.cards[2]?.card?.card?.info?.name == undefined ? (
+        {menu.length === 0 ? (
           <ShimmerMenu />
         ) : (
           <div className="menu-wrap flex flex-col md:flex-row gap-10">
@@ -155,7 +155,7 @@ const RestaurantMenu = () => {
                                       className="w-24 h-24 rounded-lg"
                                     />
                                     <div className="flex justify-center items-center mt-2 gap-3">
-                                    {(state.count == 0) ? "" :( <span className="cursor-pointer" onClick={() => dispatch({ type: "REMOVE_FROM_CART", payload: item.id })}><i className="fas fa-minus"></i></span>)}
+                                    {(state.count == 0) ? "" :( <span className="cursor-pointer" onClick={() => dispatch({ type: "REMOVE_FROM_CART", payload: element?.card.info.id })}><i className="fas fa-minus"></i></span>)}
                                     <button className="bg-green-500 text-white px-4 py-1 rounded-lg" onClick={() => dispatch({ type: "ADD_TO_CART", payload: element?.card })}>
                                     {state.count == 0 ? " ADD " : state.count}
                                     </button>{(state.count == 0) ? "" :( <span className="cursor-pointer" onClick={() => dispatch({ type: "ADD_TO_CART", payload: element?.card })}><i className="fas fa-plus"></i></span>)}
