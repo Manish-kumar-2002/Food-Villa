@@ -12,8 +12,8 @@ const cartReducer = (state, action) => {
     case "ADD_TO_CART":{
       const updateCart = [...state.cart, action.payload]
       const updateCount = +(state.count) + 1
-      localStorage.setItem("cart",JSON.stringify(updateCart))
-      localStorage.setItem("count",updateCount) 
+      // localStorage.setItem("cart",JSON.stringify(updateCart))
+      // localStorage.setItem("count",updateCount) 
       return {
         ...state,
         cart: updateCart, // Item add hoga

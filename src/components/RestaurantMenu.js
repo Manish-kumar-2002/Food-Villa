@@ -4,6 +4,8 @@ import { IMG_URL, MENUS_IMG_URL } from "../../constant";
 import ShimmerMenu from "./ShimmerMenu";
 import useGetMenu from "../utils/useGetMenu";
 import { CartContext } from "../utils/UpdateCartContext";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const RestaurantMenu = () => {
   const { resId } = useParams("");
@@ -12,10 +14,15 @@ const RestaurantMenu = () => {
 
   console.log(menu);
 
-  const product = menu
-  
+  const product = menu;
 
   const { state, dispatch } = useContext(CartContext);
+
+  const dispatchRedux = useDispatch();
+
+  const handlerAddItem = (item) => {
+    dispatchRedux(addItem(item));
+  };
 
   // const accordionData = [
   //   { id: 1, title: "Section 1", content: "Content for section 1" },
@@ -49,7 +56,7 @@ const RestaurantMenu = () => {
           <ShimmerMenu />
         ) : (
           <div className="menu-wrap flex flex-col md:flex-row gap-10">
-            <div className="restaurent-details md:w-[300px] flex-none sticky top-[128px] h-[calc(100vh-128px)] overflow-y-auto">
+            <div className="restaurent-details md:w-[300px] flex-none md:sticky top-[128px] h-[calc(100vh-128px)] overflow-y-auto">
               {/* <h1 className="text-3xl font-bold whitespace-nowrap mb-2">
                 Restaurant Id : {resId}
               </h1> */}
@@ -77,7 +84,7 @@ const RestaurantMenu = () => {
                   menu?.data?.cards[2]?.card?.card?.info?.locality}
               </p>
             </div>
-            <div className="restaurent-menu w-full overflow-y-auto">
+            <div className="restaurent-menu w-full md:overflow-y-auto">
               <p className="text-2xl font-bold mb-4">
                 Menu List <i className="fas fa-utensils"></i>{" "}
               </p>
@@ -142,7 +149,7 @@ const RestaurantMenu = () => {
                                       ?.aggregatedRating?.ratingCountV2 || "0"}
                                     )
                                   </p>
-                                  <p className="text-gray-300 text-sm mt-1 max-w-[600px] line-clamp-2">
+                                  <p className="text-gray-300 text-sm mt-1 line-clamp-2">
                                     {element?.card?.info?.description ||
                                       "No description available"}
                                   </p>
@@ -155,10 +162,18 @@ const RestaurantMenu = () => {
                                       className="w-24 h-24 rounded-lg"
                                     />
                                     <div className="flex justify-center items-center mt-2 gap-3">
-                                    {(state.count == 0) ? "" :( <span className="cursor-pointer" onClick={() => dispatch({ type: "REMOVE_FROM_CART", payload: element?.card.info.id })}><i className="fas fa-minus"></i></span>)}
+                                      {/* {(state.count == 0) ? "" :( <span className="cursor-pointer" onClick={() => dispatch({ type: "REMOVE_FROM_CART", payload: element?.card.info.id })}><i className="fas fa-minus"></i></span>)}
                                     <button className="bg-green-500 text-white px-4 py-1 rounded-lg" onClick={() => dispatch({ type: "ADD_TO_CART", payload: element?.card })}>
                                     {state.count == 0 ? " ADD " : state.count}
-                                    </button>{(state.count == 0) ? "" :( <span className="cursor-pointer" onClick={() => dispatch({ type: "ADD_TO_CART", payload: element?.card })}><i className="fas fa-plus"></i></span>)}
+                                    </button>{(state.count == 0) ? "" :( <span className="cursor-pointer" onClick={() => dispatch({ type: "ADD_TO_CART", payload: element?.card })}><i className="fas fa-plus"></i></span>)} */}
+                                      <button
+                                        className="bg-green-500 text-white px-4 py-1 rounded-lg"
+                                        onClick={() =>
+                                          handlerAddItem(element?.card)
+                                        }
+                                      >
+                                        Add
+                                      </button>
                                     </div>
                                   </div>
                                 )}

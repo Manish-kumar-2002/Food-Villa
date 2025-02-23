@@ -2,13 +2,17 @@ import { useState,useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import { CartContext } from "../utils/UpdateCartContext";
+import { useSelector } from "react-redux";
 
 const HeaderComponent = function () {
   const [logedInUser, setLogedInUser] = useState(true);
   const [menuActive, setMenuActive] = useState(false);
   const {user} = useContext(UserContext)
   const { state, dispatch } = useContext(CartContext);
-
+  
+  const cartCount = useSelector((store)=>store.cart.items)
+  console.log(cartCount);
+  
   
   return (
     <header
@@ -60,8 +64,9 @@ const HeaderComponent = function () {
                   Cart
                 </Link>
                 <span className="absolute -top-3 -right-4 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                {state.count}
+                {/* {state.count}*/ } {cartCount.length}
                 </span>
+                
               </li>
             </ul>
           </nav>

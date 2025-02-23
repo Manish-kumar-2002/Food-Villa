@@ -53,7 +53,7 @@ const MainSection = () => {
           <div className="flex flex-wrap gap-5 justify-start">
             {filterRestaurants.map((restaurant, index) => (
               <Link
-                className="w-[100%] md:w-[31.6%]  lg:w-[23.7%]"
+                className="w-[100%] md:w-[31.6%] lg:w-[23.7%]"
                 key={restaurant.info.id}
                 to={`/restaurant/${restaurant.info.id}`}
               >

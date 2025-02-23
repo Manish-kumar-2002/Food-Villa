@@ -11,6 +11,9 @@ import InnerAbout from "./src/components/InnerAbout";
 import MartProduct from "./src/components/MartProduct";
 import Cart from "./src/components/Cart";
 import { CartProvider } from "./src/utils/UpdateCartContext";
+import { Provider } from "react-redux";
+import foodStore from "./src/utils/store";
+
 
 
 
@@ -71,11 +74,11 @@ const About = lazy(()=>import("./src/components/About"))
 
 const AppLayout = () => {
   return (
-    <>
+    <Provider store={foodStore}>
       <HeaderComponent />
       <Outlet />
       <Footer />
-    </>
+    </Provider>
   );
 };
 
@@ -138,3 +141,5 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 //passing a react element inside the root
 //async defer
 root.render(<CartProvider><RouterProvider router={appRouter} /></CartProvider>);
+
+// root.render(<CartProvider><RouterProvider router={appRouter} /></CartProvider>);
